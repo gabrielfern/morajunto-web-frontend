@@ -9,5 +9,3 @@ export default {
   name: 'App'
 }
 </script>
-
-<style src='./assets/materialize.min.css'/>
