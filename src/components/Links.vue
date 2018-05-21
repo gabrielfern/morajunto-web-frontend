@@ -1,7 +1,6 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
+  <div>
+    <h3>Essential Links</h3>
     <ul>
       <li>
         <a
@@ -45,7 +44,7 @@
         </a>
       </li>
     </ul>
-    <h2>Ecosystem</h2>
+    <h3>Ecosystem</h3>
     <ul>
       <li>
         <a
@@ -85,11 +84,6 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
-  data () {
-    return {
-      msg: 'morajunto app'
-    }
-  }
+  name: 'Links'
 }
 </script>
