@@ -3,6 +3,7 @@
     <h1>{{ msg }}</h1>
     <a href="/#/"><button class="waves-effect waves-light btn">Inicio</button></a>
     <a href="/#/signup"><button class="waves-effect waves-light btn">Cadastrar</button></a>
+    <a href="/#/login"><button class="waves-effect waves-light btn">Login</button></a>
     <a href="/#/about"><button class="waves-effect waves-light btn">Sobre</button></a>
     <hr>
     <router-view/>
