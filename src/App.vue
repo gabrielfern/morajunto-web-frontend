@@ -1,15 +1,19 @@
 <template>
   <div id="app" class="container">
-    <h1>{{ msg }}</h1>
-    <a href="/#/"><button class="waves-effect waves-light btn">Inicio</button></a>
-    <a href="/#/signup"><button class="waves-effect waves-light btn">Cadastrar</button></a>
-    <a href="/#/login"><button class="waves-effect waves-light btn">Login</button></a>
-    <a href="/#/about"><button class="waves-effect waves-light btn">Sobre</button></a>
+    <nav>
+      <div class="nav-wrapper teal">
+        <a href="/#/" class="brand-logo">MoraJunto</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/#/">Inicio</a></li>
+          <li><a href="/#/signup">Cadastrar</a></li>
+          <li><a href="/#/login">Login</a></li>
+          <li><a href="/#/about">Sobre</a></li>
+        </ul>
+      </div>
+    </nav>
     <hr>
     <router-view/>
     <hr>
-    <button @click="listUsers" class="waves-effect waves-light btn">list users</button>
-    <p v-if="showMsgListUsers">open browser dev console</p>
   </div>
 </template>
 
