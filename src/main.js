@@ -4,6 +4,7 @@ import router from './router'
 
 import 'materialize-css/dist/js/materialize.min.js'
 import 'materialize-css/dist/css/materialize.min.css'
+import 'jquery/dist/jquery.min.js'
 
 /* eslint-disable no-new */
 let app = new Vue({

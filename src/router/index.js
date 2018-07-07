@@ -4,7 +4,7 @@ import Links from '../components/Links'
 import About from '../components/About'
 import SignUp from '../components/SignUp'
 import Login from '../components/Login'
-
+import User from '../components/User'
 Vue.use(Router)
 
 export default new Router({
@@ -28,6 +28,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/user/:username',
+      name: 'user',
+      component: User
     }
   ]
 })

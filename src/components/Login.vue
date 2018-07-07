@@ -46,6 +46,7 @@ export default {
         if (data[i].email === this.email && data[i].password === this.password) {
           this.successLogin = true
           this.failLogin = false
+          this.$router.push({ path: `/user/${data[i].username}` })
         } else {
           this.failLogin = true
           this.successLogin = false
