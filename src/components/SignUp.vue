@@ -26,7 +26,6 @@
 </template>
 
 <script>
-
 export default {
   data () {
     return {
@@ -53,8 +52,7 @@ export default {
       })
         .then(resp => {
           if (resp.status < 300) {
-            this.showSignUpResult(false)
-            this.$router.push('login')
+            this.showSignUpResult(true)
           } else {
             this.showSignUpResult(false)
           }
@@ -63,7 +61,7 @@ export default {
     showSignUpResult (succeeded) {
       this.failOnSignUp = this.successOnSignUp = false
       if (succeeded) {
-        this.failOnSignUp = true
+        this.successOnSignUp = true
       } else {
         this.failOnSignUp = false
       }
