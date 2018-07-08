@@ -13,7 +13,7 @@
       </div>
     </div>
     <a href="/#/"><button class="btn waves-effect waves-light red lighten-2">Cancelar</button></a>
-    <a href="#" @click="loginUser"><button class="waves-effect waves-light btn">Entrar</button></a>
+    <button class="waves-effect waves-light btn" @click="loginUser" :disabled="!email || !password">Entrar</button>
     <a href="/#/signup"><button class="waves-effect waves-light btn blue-grey right">Cadastrar</button></a>
     <h4 v-if="failLogin"> Login ou senha inválidos</h4>
     <h4 v-if="successLogin">Login com sucesso</h4>
