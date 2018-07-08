@@ -4,6 +4,7 @@ import About from '../components/About'
 import SignUp from '../components/SignUp'
 import Login from '../components/Login'
 import User from '../components/User'
+import CriarAnuncio from '../components/CriarAnuncio'
 Vue.use(Router)
 
 export default new Router({
@@ -17,6 +18,11 @@ export default new Router({
       path: '/signup',
       name: 'SignUp',
       component: SignUp
+    },
+    {
+      path: '/criarAnuncio',
+      name: 'criarAnuncio',
+      component: CriarAnuncio
     },
     {
       path: '/login',

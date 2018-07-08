@@ -16,6 +16,7 @@
       <h6>Id:</h6>
       <p class="light"> {{id}}</p>
     </div>
+    <a href="#" @click="goToCadastrarAnuncio"><button class="waves-effect waves-light btn">Confirmar</button></a>
   </div>
 </template>
 
@@ -32,10 +33,14 @@ export default {
   },
   methods: {
     processing (data) {
+      console.log(data)
       this.username = data.username
       this.email = data.email
       this.password = data.password
       this.id = data.id
+    },
+    goToCadastrarAnuncio () {
+      this.$router.push({ path: '/criarAnuncio' })
     }
   },
   mounted: function () {
