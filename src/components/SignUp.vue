@@ -19,7 +19,8 @@
       </div>
     </div>
     <a href="/#/"><button class="btn waves-effect waves-light red lighten-2">Cancelar</button></a>
-    <a href="#" @click="createUser"><button class="waves-effect waves-light btn">Confirmar</button></a>
+    <button class="waves-effect waves-light btn" @click="createUser" :disabled="!name || !email || !password">Confirmar</button>
+    <a href="/#/login"><button class="waves-effect waves-light btn blue-grey right">Entrar</button></a>
     <h4 v-if="failOnSignUp">Falha ao cadastrar</h4>
     <h4 v-if="successOnSignUp">Cadastrado com sucesso</h4>
   </div>
