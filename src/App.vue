@@ -5,7 +5,6 @@
         <a href="/#/" class="brand-logo">MoraJunto</a>
         <a href="#" data-activates="mobile-first" class="button-collapse right"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="/#/">Inicio</a></li>
           <li><a href="/#/signup">Cadastrar</a></li>
           <li><a href="/#/login">Login</a></li>
           <li><a href="/#/about">Sobre</a></li>
@@ -13,7 +12,6 @@
       </div>
     </nav>
     <ul class="side-nav" id="mobile-first">
-      <li><a href="/#/">Inicio</a></li>
       <li><a href="/#/signup">Cadastrar</a></li>
       <li><a href="/#/login">Login</a></li>
       <li><a href="/#/about">Sobre</a></li>
