@@ -1,11 +1,20 @@
 <template>
   <div class="row">
-    <div class="row">
-      <div class="input-field col s12">
-        <h3>{{teste.username}}</h3>
-        <a href="#" @click="verifyLogin"><button class="waves-effect waves-light btn">Login</button></a>
-        <label>Nome</label>
-      </div>
+    <div class="input-field col s12">
+      <h6>Username:</h6>
+      <p class="light"> {{username}}</p>
+    </div>
+    <div class="input-field col s12">
+      <h6>Email:</h6>
+      <p class="light"> {{email}}</p>
+    </div>
+    <div class="input-field col s12">
+      <h6>Password:</h6>
+      <p class="light"> {{password}}</p>
+    </div>
+    <div class="input-field col s12">
+      <h6>Id:</h6>
+      <p class="light"> {{id}}</p>
     </div>
   </div>
 </template>
@@ -15,18 +24,28 @@
 export default {
   data () {
     return {
-      asdasd: ''
+      username: '',
+      email: '',
+      password: '',
+      id: ''
     }
   },
   methods: {
-    verifyLogin () {
-      console.log()
+    processing (data) {
+      this.username = data.username
+      this.email = data.email
+      this.password = data.password
+      this.id = data.id
     }
   },
-  computed: {
-    teste: function () {
-      return this.$route.params
-    }
+  mounted: function () {
+    this.$nextTick(function () {
+      fetch('/api/users/' + this.$route.params.username, {
+        method: 'GET'
+      })
+        .then(resp => resp.json())
+        .then(data => this.processing(data.data))
+    })
   }
 }
 </script>
