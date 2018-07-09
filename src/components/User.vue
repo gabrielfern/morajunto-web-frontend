@@ -16,7 +16,9 @@
       <h6>Id:</h6>
       <p class="light"> {{id}}</p>
     </div>
-    <a href="#" @click="goToCadastrarAnuncio"><button class="waves-effect waves-light btn">Confirmar</button></a>
+    <a href="#" @click="goToCadastrarAnuncio"><button class="waves-effect waves-light btn">Criar anúncio</button></a>
+    <a href="#" @click="goToUpdateUser"><button class="btn waves-effect waves-light blue lighten-2">Mudar senha</button></a>
+    <a href="#" @click="deleteUser"><button class="btn waves-effect waves-light red lighten-2">Excluir conta</button></a>
   </div>
 </template>
 
@@ -33,7 +35,6 @@ export default {
   },
   methods: {
     processing (data) {
-      console.log(data)
       this.username = data.username
       this.email = data.email
       this.password = data.password
@@ -41,6 +42,18 @@ export default {
     },
     goToCadastrarAnuncio () {
       this.$router.push({ path: '/criarAnuncio' })
+    },
+    goToUpdateUser () {
+      this.$router.push({ path: '/user/update/' + this.username })
+    },
+    deleteUser () {
+      fetch('/api/users/' + this.id, {
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
     }
   },
   mounted: function () {

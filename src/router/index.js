@@ -4,6 +4,7 @@ import About from '../components/About'
 import SignUp from '../components/SignUp'
 import Login from '../components/Login'
 import User from '../components/User'
+import UpdateUser from '../components/UpdateUser'
 import CriarAnuncio from '../components/CriarAnuncio'
 import Home from '../components/Home'
 
@@ -36,9 +37,14 @@ export default new Router({
       component: Login
     },
     {
-      path: '/',
+      path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/user/update/:username',
+      name: 'update',
+      component: UpdateUser
     },
     {
       path: '/user/:username',
