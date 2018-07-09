@@ -5,10 +5,16 @@ import SignUp from '../components/SignUp'
 import Login from '../components/Login'
 import User from '../components/User'
 import CriarAnuncio from '../components/CriarAnuncio'
-Vue.use(Router)
+import Home from '../components/Home'
 
+Vue.use(Router)
 export default new Router({
   routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: Home
+    },
     {
       path: '/about',
       name: 'About',

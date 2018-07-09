@@ -2,7 +2,7 @@
   <div id="app" class="container">
     <nav>
       <div class="nav-wrapper teal">
-        <a href="/#/" class="brand-logo">MoraJunto</a>
+        <a href="/#/" class="brand-logo"><i class="material-icons">hotel</i>MoraJunto</a>
         <a href="#" data-activates="mobile-first" class="button-collapse right"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="/#/signup">Cadastrar</a></li>
@@ -27,7 +27,6 @@ export default {
   name: 'App',
   data () {
     return {
-      showMsgListUsers: false,
       msg: 'MoraJunto app'
     }
   },
@@ -36,7 +35,6 @@ export default {
       fetch('/api/users')
         .then(resp => resp.json())
         .then(data => console.log(data))
-      this.showMsgListUsers = true
     }
   },
   mounted () {
