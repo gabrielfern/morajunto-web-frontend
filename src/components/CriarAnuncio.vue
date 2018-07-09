@@ -6,6 +6,10 @@
         <the-mask :mask="['#####-###']" id="cep" v-model="cep"/>
         <label>CEP</label>
       </div>
+      <br>
+      <div class="row col s2">
+        <button class="waves-effect waves-light btn" @click="getCep" :disabled="!cep"> Buscar </button>
+    </div>
     </div>
     <div class="row">
         <div class="input-field col s6">
@@ -27,9 +31,7 @@
          <input id="estado" >
         </div>
     </div>
-    <div class="row">
-    <button class="waves-effect waves-light btn" @click="getCep" :disabled="!cep">Buscar</button>
-      </div>
+
     <div class="">
       <div class="row mapheight" id="maparea" >
       <div id="map" class="map map_all_space"></div>
