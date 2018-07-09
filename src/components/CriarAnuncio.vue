@@ -8,7 +8,8 @@
       </div>
       <br>
       <div class="row col s2">
-        <button class="waves-effect waves-light btn" @click="getCep" :disabled="!cep"> Buscar </button>
+        <button class="waves-effect waves-light btn" @click="getCep" :disabled="!cep"> <i class="material-icons">search</i>
+        </button>
     </div>
     </div>
     <div class="row">
