@@ -37,8 +37,5 @@ export default {
         .then(data => console.log(data))
     }
   },
-  mounted () {
-    $('.button-collapse').sideNav({ closeOnClick: true })
-  }
 }
 </script>

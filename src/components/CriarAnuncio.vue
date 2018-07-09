@@ -1,7 +1,8 @@
 <template>
   <div class="row">
+    <h5 style="color: teal;">Criar anúncio</h5>
     <div class="row">
-      <div class="input-field col s12">
+      <div class="input-field col s2">
         <the-mask :mask="['#####-###']" id="cep" v-model="cep"/>
         <label>CEP</label>
       </div>
@@ -26,7 +27,26 @@
          <input id="estado" >
         </div>
     </div>
+    <div class="row">
     <button class="waves-effect waves-light btn" @click="getCep" :disabled="!cep">Buscar</button>
+      </div>
+    <div class="">
+      <div class="row mapheight" id="maparea" >
+      <div id="map" class="map map_all_space"></div>
+      <button id="map_print" type="hidden" class="no_display"></button>
+    </div>
+      <div>
+      <div class="col">
+          <input type="hidden" id="id_latitude" name="latitude">
+        </div>
+      <div class="col">
+          <input type="hidden" id="id_longitude" name="longitude">
+        </div>
+      <div class="col">
+          <input type="hidden" id="id_radius" name="radius">
+        </div>
+    </div>
+    </div>
   </div>
 </template>
 <script>
@@ -53,6 +73,8 @@ export default {
           type: 'GET',
           url: 'https://viacep.com.br/ws/' + cepCode + '/json/',
           success: function (result) {
+            /* eslint-disable no-undef */
+            getGeo(result.logradouro, result.localidade, result.uf)
             $('#rua').val(result.logradouro)
             $('#bairro').val(result.bairro)
             $('#cidade').val(result.localidade)
@@ -63,6 +85,9 @@ export default {
     }
   },
   mounted () {
+    /* eslint-disable no-undef */
+    runMaps()
+    evenMp()
     $('#rua').prop('disabled', true)
     $('#bairro').prop('disabled', true)
     $('#cidade').prop('disabled', true)

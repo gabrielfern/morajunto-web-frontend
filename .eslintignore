@@ -3,3 +3,7 @@
 /dist/
 /*.js
 /src/assets/*.js
+/static/ol3/maps.js
+/static/ol3/ol.css
+/static/ol3/ol.js
+/static/ol3/ol-debug.js
