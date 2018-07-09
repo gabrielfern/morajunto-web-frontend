@@ -53,8 +53,6 @@ export default {
           type: 'GET',
           url: 'https://viacep.com.br/ws/' + cepCode + '/json/',
           success: function (result) {
-            console.log(result)
-            $('#rua').val(result.logradouro)
             $('#rua').val(result.logradouro)
             $('#bairro').val(result.bairro)
             $('#cidade').val(result.localidade)
