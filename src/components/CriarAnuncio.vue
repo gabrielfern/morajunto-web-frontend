@@ -2,29 +2,31 @@
   <div class="row">
     <div class="row">
       <div class="input-field col s12">
-        <the-mask :mask="['#####-###']" id="cep"/>
+        <the-mask :mask="['#####-###']" id="cep" v-model="cep"/>
         <label>CEP</label>
       </div>
     </div>
     <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <label name="endereco">Endereço:</label>
           <input id="rua" >
         </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s12">
+      <div class="input-field col s6">
           <label name="endereco">Bairro:</label>
           <input id="bairro" >
         </div>
     </div>
     <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <label name="endereco">Cidade:</label>
          <input id="cidade" >
         </div>
+       <div class="input-field col s6">
+          <label name="endereco">Estado:</label>
+         <input id="estado" >
+        </div>
     </div>
-    <a href="#" @click="getCep"><button class="waves-effect waves-light btn">Buscar</button></a>
+    <button class="waves-effect waves-light btn" @click="getCep" :disabled="!cep">Buscar</button>
   </div>
 </template>
 <script>
@@ -46,25 +48,27 @@ export default {
   methods: {
     getCep () {
       let cepCode = $('#cep').val()
-      $.ajax({
-        type: 'GET',
-        url: 'https://viacep.com.br/ws/' + cepCode + '/json/',
-        success: function (result) {
-          console.log(result)
-          $('#rua').val(result.logradouro)
-          $('#rua').val(result.logradouro)
-          $('#bairro').val(result.bairro)
-          $('#cidade').val(result.localidade)
-        }
-      })
+      if (cepCode.length === 9) {
+        $.ajax({
+          type: 'GET',
+          url: 'https://viacep.com.br/ws/' + cepCode + '/json/',
+          success: function (result) {
+            console.log(result)
+            $('#rua').val(result.logradouro)
+            $('#rua').val(result.logradouro)
+            $('#bairro').val(result.bairro)
+            $('#cidade').val(result.localidade)
+            $('#estado').val(result.uf)
+          }
+        })
+      }
     }
   },
   mounted () {
     $('#rua').prop('disabled', true)
     $('#bairro').prop('disabled', true)
     $('#cidade').prop('disabled', true)
-    $('[name=endereco]').prop('class', 'active')
-    $('[name=endereco]').prop('class', 'active')
+    $('#estado').prop('disabled', true)
     $('[name=endereco]').prop('class', 'active')
   }
 }
