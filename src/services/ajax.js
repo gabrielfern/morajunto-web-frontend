@@ -1,19 +1,40 @@
+import loginControl from '../services/login_control'
+
 export default {
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json'
   },
 
-  createUser (name, email, password) {
+  createUser (username, password, email) {
     return fetch('/api/users', {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify({
-        username: name,
-        email: email,
-        password: password
+        username: username,
+        password: password,
+        email: email
       })
     })
+  },
+
+  login (username, password) {
+    let success = false
+    return fetch('/api/users/' + username + '/' + password, {
+      method: 'POST',
+      headers: this.headers
+    })
+      .then(resp => {
+        if (resp.status < 300) {
+          success = true
+          return resp.json()
+        }
+      })
+      .then(json => {
+        loginControl.logged = true
+        loginControl.loginData = json
+        return success
+      })
   },
 
   getAllUsers () {

@@ -20,7 +20,7 @@
     <a href="#" @click="goToUpdateUser"><button class="btn waves-effect waves-light blue lighten-2">Editar senha</button></a>
       <a href="#" @click="goToAnuncios"><button class="btn waves-effect waves-light blue lighten-2">Anúncios</button></a>
       </div>
-    <div class="s12 m4 l2"><a href="#" @click="deleteUser"><button class="btn waves-effect waves-light red lighten-2">Excluir conta</button></a>
+    <div class="s12 m4 l2"><a href="#" @click="deleteUser"><button class="btn waves-effect waves-light red lighten-2 right">Excluir conta</button></a>
       </div>
   </div>
 </template>
