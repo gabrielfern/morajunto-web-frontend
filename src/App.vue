@@ -29,13 +29,6 @@ export default {
     return {
       msg: 'MoraJunto app'
     }
-  },
-  methods: {
-    listUsers () {
-      fetch('/api/users')
-        .then(resp => resp.json())
-        .then(data => console.log(data))
-    }
   }
 }
 </script>

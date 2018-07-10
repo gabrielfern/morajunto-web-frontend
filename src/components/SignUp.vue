@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import ajax from '../services/ajax'
+
 export default {
   data () {
     return {
@@ -39,18 +41,11 @@ export default {
   },
   methods: {
     createUser () {
-      fetch('/api/users', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          username: this.name,
-          email: this.email,
-          password: this.password
-        })
-      })
+      ajax.createUser(
+        this.name,
+        this.email,
+        this.password
+      )
         .then(resp => {
           if (resp.status < 300) {
             this.showSignUpResult(true)
