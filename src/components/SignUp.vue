@@ -1,21 +1,37 @@
 <template>
   <div class="row">
     <div class="row">
-      <div class="input-field col s12">
+      <div class="input-field col s6">
         <input type="text" v-model="name">
         <label>Nome de Usuario</label>
       </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input type="password" v-model="password">
-        <label>Senha</label>
+      <div class="input-field col s6">
+        <input type="text" v-model="username">
+          <label>Username</label>
       </div>
     </div>
     <div class="row">
-      <div class="input-field col s12">
-        <input type="email" v-model="email">
+      <div class="input-field col s3">
+        <input type="text" v-model="contact">
+        <label>Telefone</label>
+      </div>
+      <div class="input-field col s3">
+        <input type="text" v-model="cpf">
+          <label>CPF</label>
+      </div>
+       <div class="input-field col s2">
+        <input type="text" v-model="age">
+          <label>Idade</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input type="text" v-model="email">
         <label>Email</label>
+      </div>
+      <div class="input-field col s6">
+        <input type="password" v-model="password">
+        <label>Senha</label>
       </div>
     </div>
     <a href="/#/"><button class="btn waves-effect waves-light red lighten-2">Cancelar</button></a>
@@ -34,6 +50,10 @@ export default {
     return {
       name: '',
       email: '',
+      username: '',
+      contact: '',
+      cpf: '',
+      age: '',
       password: '',
       failOnSignUp: false,
       successOnSignUp: false

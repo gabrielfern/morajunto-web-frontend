@@ -6,14 +6,15 @@ export default {
     'Content-Type': 'application/json'
   },
 
-  createUser (username, password, email) {
+  createUser (username, password, email, contact, cpf) {
     return fetch('/api/users', {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify({
         username: username,
         password: password,
-        email: email
+        email: email,
+        contact: contact
       })
     })
   },
