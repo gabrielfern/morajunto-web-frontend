@@ -39,7 +39,7 @@ export default {
 
     handleLogin (success) {
       if (success) {
-        this.$router.push({ path: `/user/${this.username}` })
+        this.$router.push({ path: '/' })
       } else {
         this.failLogin = true
       }

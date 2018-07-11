@@ -6,11 +6,13 @@
     <div class="input-field col s12">
         <input type="password" v-model="password">
         <label>Digite a nova senha:</label>
+        <a href="#"><button class="btn waves-effect waves-light red lighten-2" @click="cancelar">Cancelar</button></a>
         <a href="#" @click="updateUser"><button class="waves-effect waves-light btn">Atualizar</button></a>
       </div>
   </div>
 </template>
 <script>
+import loginControl from '../services/login_control'
 
 export default {
   data () {
@@ -20,6 +22,10 @@ export default {
     }
   },
   methods: {
+    cancelar () {
+      this.$router.push({ path: `/user/${loginControl.loginData.user.username}` })
+    },
+
     updateUser () {
       fetch('/api/users/' + this.username + '/' + this.password, {
         method: 'POST',

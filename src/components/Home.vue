@@ -1,5 +1,21 @@
 <template>
   <div class="container">
-    <h1>Bem vindo ao MoraJunto</h1>
+    <h1>Bem vindo {{msg}}</h1>
   </div>
 </template>
+
+<script>
+import loginControl from '../services/login_control'
+
+export default {
+  computed: {
+    msg () {
+      if (loginControl.logged) {
+        return loginControl.loginData.user.username
+      } else {
+        return 'ao MoraJunto'
+      }
+    }
+  }
+}
+</script>
