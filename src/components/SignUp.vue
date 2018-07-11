@@ -12,12 +12,12 @@
     </div>
     <div class="row">
       <div class="input-field col s3">
-        <input type="text" v-model="contact">
+        <the-mask :mask="['(##)####-####']" id="contact" v-model="contact"/>
         <label>Telefone</label>
       </div>
       <div class="input-field col s3">
-        <input type="text" v-model="cpf">
-          <label>CPF</label>
+        <the-mask :mask="['###.###.###-##']" id="cpf" v-model="cpf"/>
+         <label>CPF</label>
       </div>
        <div class="input-field col s2">
         <input type="text" v-model="age">
@@ -44,8 +44,10 @@
 
 <script>
 import ajax from '../services/ajax'
+import {TheMask} from 'vue-the-mask'
 
 export default {
+  components: {TheMask},
   data () {
     return {
       name: '',
@@ -65,7 +67,11 @@ export default {
       ajax.createUser(
         this.name,
         this.email,
-        this.password
+        this.password,
+        parseInt(this.contact),
+        parseInt(this.cpf),
+        parseInt(this.age),
+        this.username
       )
         .then(resp => {
           if (resp.status < 300) {
