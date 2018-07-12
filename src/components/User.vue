@@ -1,20 +1,34 @@
 <template>
   <div class="row">
-    <div class="input-field col s12">
-      <h6>Username:</h6>
-      <p class="light"> {{username}}</p>
+    <div class="row">
+      <div class="input-field col s6">
+        <input type="text" class="fields" id="name" >
+        <label  name="dados">Nome de Usuario</label>
+      </div>
+      <div class="input-field col s6">
+        <input type="text" class="fields" id="username" >
+          <label name="dados" >Username</label>
+      </div>
     </div>
-    <div class="input-field col s12">
-      <h6>Email:</h6>
-      <p class="light"> {{email}}</p>
+    <div class="row">
+      <div class="input-field col s3">
+        <input type="text" class="fields" id="contact" >
+        <label name="dados">Telefone</label>
+      </div>
+      <div class="input-field col s3">
+        <input type="text" class="fields" id="cpf" >
+        <label name="dados">CPF</label>
+      </div>
+       <div class="input-field col s2">
+        <input type="text" class="fields" id="age">
+          <label name="dados">Idade</label>
+      </div>
     </div>
-    <div class="input-field col s12">
-      <h6>Password:</h6>
-      <p class="light"> {{password}}</p>
-    </div>
-    <div class="input-field col s12">
-      <h6>Id:</h6>
-      <p class="light"> {{id}}</p>
+    <div class="row">
+      <div class="input-field col s6">
+        <input type="text" class="fields" id="email" >
+        <label name="dados">Email</label>
+      </div>
     </div>
     <div class="col s9"><a href="#" @click="goToCadastrarAnuncio"><button class="waves-effect waves-light btn">Criar anúncio</button></a>
     <a href="#" @click="goToUpdateUser"><button class="btn waves-effect waves-light blue lighten-2">Editar senha</button></a>
@@ -30,18 +44,26 @@
 export default {
   data () {
     return {
-      username: '',
-      email: '',
-      password: '',
-      id: ''
+      id: '',
+      username: ''
     }
   },
   methods: {
     processing (data) {
       this.username = data.username
-      this.email = data.email
-      this.password = data.password
       this.id = data.id
+      var contact = data.contact
+      var cpf = data.cpf
+      $('#name').val(data.name)
+      contact = '(' + contact.toString().slice(0, 2) + ')' + contact.toString().slice(2, 6) + '-' + contact.toString().slice(5, 11)
+      $('#contact').val(contact)
+      cpf = cpf.toString().slice(0, 3) + '.' + cpf.toString().slice(3, 6) + '.' + cpf.toString().slice(6, 9) + '-' +
+      cpf.toString().slice(9, 11)
+      $('#cpf').val(cpf)
+      $('#age').val(data.age)
+      $('#email').val(data.email)
+      $('.fields').prop('disabled', true)
+      $('[name=dados]').prop('class', 'active')
     },
     goToCadastrarAnuncio () {
       this.$router.push({ path: '/criarAnuncio' })
