@@ -13,16 +13,16 @@
         <tbody id="test">
         <tr v-for="item in object" :key="item.id" >
           <td>
-            <a v-bind:href="'/anuncio/' + item.id" style="display: block; width:100%">{{item.advertiser}}</a>
+            <a v-bind:href="'#/anuncio/' + item.id" style="display: block; width:100%">{{item.advertiser}}</a>
           </td>
           <td>
-             <a v-bind:href="'/anuncio/' + item.id" style="display: block; width:100%">{{item.email  }}</a>
+             <a v-bind:href="'#/anuncio/' + item.id" style="display: block; width:100%">{{item.email  }}</a>
           </td>
           <td>
-             <a v-bind:href="'/anuncio/' + item.id" style="display: block; width:100%">{{item.rooms  }}</a>
+             <a v-bind:href="'#/anuncio/' + item.id" style="display: block; width:100%">{{item.rooms  }}</a>
           </td>
           <td>
-             <a v-bind:href="'/anuncio/' + item.id" style="display: block; width:100%">{{item.bathroom  }}</a>
+             <a v-bind:href="'#/anuncio/' + item.id" style="display: block; width:100%">{{item.bathroom  }}</a>
           </td>
         </tr>
         </tbody>
@@ -54,8 +54,6 @@ export default {
     })
       .then(resp => resp.json())
       .then(data => this.processing(data.data))
-    console.log('asdas')
-
   }
 }
 </script>

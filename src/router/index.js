@@ -7,6 +7,7 @@ import User from '../components/User'
 import Anuncios from '../components/Anuncios'
 import UpdateUser from '../components/UpdateUser'
 import CriarAnuncio from '../components/CriarAnuncio'
+import Anuncio from '../components/Anuncio'
 import Home from '../components/Home'
 
 Vue.use(Router)
@@ -46,6 +47,11 @@ export default new Router({
       path: '/user/update/:username',
       name: 'update',
       component: UpdateUser
+    },
+    {
+      path: '/anuncio/:id',
+      name: 'anuncio',
+      component: Anuncio
     },
     {
       path: '/user/:username',

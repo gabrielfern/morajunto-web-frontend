@@ -54,6 +54,7 @@ export default {
       var contact = data.contact
       var cpf = data.cpf
       $('#name').val(data.name)
+      $('#username').val(this.username)
       contact = '(' + contact.toString().slice(0, 2) + ')' + contact.toString().slice(2, 6) + '-' + contact.toString().slice(5, 11)
       $('#contact').val(contact)
       cpf = cpf.toString().slice(0, 3) + '.' + cpf.toString().slice(3, 6) + '.' + cpf.toString().slice(6, 9) + '-' +
