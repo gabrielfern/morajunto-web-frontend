@@ -1,45 +1,33 @@
 <template>
   <div class="row">
+    <div class="row">
     <table id="example" class="mdl-data-table" style="width:100%">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                <th>Anunciante</th>
+                <th>Email</th>
+                <th>Quartos</th>
+                <th>Banheiros</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-            </tr>
+        <tbody id="test">
+        <tr v-for="item in object" :key="item.id" >
+          <td>
+            <a v-bind:href="'/anuncio/' + item.id" style="display: block; width:100%">{{item.advertiser}}</a>
+          </td>
+          <td>
+             <a v-bind:href="'/anuncio/' + item.id" style="display: block; width:100%">{{item.email  }}</a>
+          </td>
+          <td>
+             <a v-bind:href="'/anuncio/' + item.id" style="display: block; width:100%">{{item.rooms  }}</a>
+          </td>
+          <td>
+             <a v-bind:href="'/anuncio/' + item.id" style="display: block; width:100%">{{item.bathroom  }}</a>
+          </td>
+        </tr>
         </tbody>
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
     </table>
+    </div>
   </div>
 </template>
 
@@ -50,43 +38,24 @@ export default {
       username: '',
       email: '',
       password: '',
-      id: ''
+      id: '',
+      object: []
     }
   },
   methods: {
     processing (data) {
-      // this.username = data.username
-      // this.email = data.email
-      // this.password = data.password
-      // this.id = data.id
-    },
-    goToCadastrarAnuncio () {
-      this.$router.push({ path: '/criarAnuncio' })
-    },
-    goToUpdateUser () {
-      this.$router.push({ path: '/user/update/' + this.username })
-    },
-    goToAnuncios () {
-      this.$router.push({ path: '/user/anuncios/' })
-    },
-    deleteUser () {
-      fetch('/api/users/' + this.id, {
-        method: 'DELETE',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      })
+      this.object = data
+      console.log(data)
     }
   },
-  mounted: function () {
-    this.$nextTick(function () {
-      fetch('/api/users/', {
-        method: 'GET'
-      })
-        .then(resp => resp.json())
-        .then(data => this.processing(data.data))
+  mounted () {
+    fetch('/api/advertisements', {
+      method: 'GET'
     })
+      .then(resp => resp.json())
+      .then(data => this.processing(data.data))
+    console.log('asdas')
+
   }
 }
 </script>

@@ -14,19 +14,19 @@
     </div>
     <div class="row">
         <div class="input-field col s4">
-          <input id="rua" v-model="street">
+          <input id="rua">
           <label name="endereco">Endereço</label>
         </div>
       <div class="input-field col s3">
-          <input id="bairro" v-model="neighborhood" >
+          <input id="bairro">
         <label name="endereco">Bairro:</label>
       </div>
       <div class="input-field col s1">
-         <input id="estado" v-model="state" >
+         <input id="estado" >
         <label name="endereco">Estado</label>
       </div>
       <div class="input-field col s4">
-         <input id="cidade" v-model="city" >
+         <input id="cidade" >
         <label name="endereco">Cidade</label>
       </div>
     </div>
@@ -75,6 +75,7 @@
         </div>
       </div>
     </div>
+    <a href="#" @click="criarAnuncio"><button class="waves-effect waves-light btn">Criar anúncio</button></a>
   </div>
 </template>
 <script>
@@ -121,7 +122,7 @@ export default {
       }
     },
     criarAnuncio () {
-      fetch('/api/advertisement/', {
+      fetch('/api/advertisements', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -129,15 +130,15 @@ export default {
         },
         body: JSON.stringify({
           advertiser: this.advertiser,
-          bathroom: this.advertiser,
+          bathroom: parseInt(this.bathroom),
           cep: this.cep,
           email: this.email,
           lat: $('#id_latitude').val(),
           lon: $('#id_longitude').val(),
           phone: this.phone,
-          price: this.price,
+          price: parseInt(this.price),
           ray: $('#id_radius').val(),
-          rooms: this.rooms
+          rooms: parseInt(this.rooms)
         })
       })
         .then(resp => {

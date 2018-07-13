@@ -75,6 +75,7 @@ export default {
       })
         .then(resp => resp.json())
         .then(data => this.processing(data.data))
+      console.log('asdas')
     })
   }
 }
