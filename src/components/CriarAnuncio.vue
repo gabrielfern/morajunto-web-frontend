@@ -10,45 +10,70 @@
       <div class="row col s2">
         <button class="waves-effect waves-light btn" @click="getCep" :disabled="!cep"> <i class="material-icons">search</i>
         </button>
-    </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s6">
-          <label name="endereco">Endereço:</label>
-          <input id="rua" >
-        </div>
-      <div class="input-field col s6">
-          <label name="endereco">Bairro:</label>
-          <input id="bairro" >
-        </div>
+      </div>
     </div>
     <div class="row">
-        <div class="input-field col s6">
-          <label name="endereco">Cidade:</label>
-         <input id="cidade" >
+        <div class="input-field col s4">
+          <input id="rua" v-model="street">
+          <label name="endereco">Endereço</label>
         </div>
-       <div class="input-field col s6">
-          <label name="endereco">Estado:</label>
-         <input id="estado" >
-        </div>
+      <div class="input-field col s3">
+          <input id="bairro" v-model="neighborhood" >
+        <label name="endereco">Bairro:</label>
+      </div>
+      <div class="input-field col s1">
+         <input id="estado" v-model="state" >
+        <label name="endereco">Estado</label>
+      </div>
+      <div class="input-field col s4">
+         <input id="cidade" v-model="city" >
+        <label name="endereco">Cidade</label>
+      </div>
     </div>
-
-    <div class="">
+    <div class="row">
+        <div class="input-field col s4">
+          <input id="advertiser" type="text" v-model="advertiser">
+          <label>Anunciante</label>
+        </div>
+      <div class="input-field col s4">
+          <input id="email" type="text" v-model="email">
+          <label>Email</label>
+      </div>
+      <div class="input-field col s4">
+         <input id="phone" type="text" v-model="phone">
+        <label>Telefone</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s2">
+         <input id="bathroom" type="text" v-model="bathroom">
+        <label>Banheiro</label>
+      </div>
+        <div class="input-field col s2">
+          <input id="price" type="text" v-model="price">
+          <label>Preço</label>
+        </div>
+      <div class="input-field col s2">
+         <input id="rooms" type="text" v-model="rooms">
+        <label>Quartos</label>
+      </div>
+    </div>
+    <div>
       <div class="row mapheight" id="maparea" >
-      <div id="map" class="map map_all_space"></div>
-      <button id="map_print" type="hidden" class="no_display"></button>
-    </div>
+        <div id="map" class="map map_all_space"></div>
+        <button id="map_print" type="hidden" class="no_display"></button>
+      </div>
       <div>
-      <div class="col">
-          <input type="hidden" id="id_latitude" name="latitude">
+        <div class="col">
+            <input type="hidden" id="id_latitude" name="latitude">
         </div>
-      <div class="col">
-          <input type="hidden" id="id_longitude" name="longitude">
+        <div class="col">
+          <input type="hidden" id="id_longitude" name="longitude" >
         </div>
-      <div class="col">
+        <div class="col">
           <input type="hidden" id="id_radius" name="radius">
         </div>
-    </div>
+      </div>
     </div>
   </div>
 </template>
@@ -59,7 +84,16 @@ export default {
   data () {
     return {
       cep: '',
-      rua: '',
+      street: '',
+      advertiser: '',
+      email: '',
+      rooms: '',
+      price: '',
+      city: '',
+      state: '',
+      neighborhood: '',
+      phone: '',
+      bathroom: '',
       failLogin: false,
       successLogin: false
     }
@@ -85,6 +119,35 @@ export default {
           }
         })
       }
+    },
+    criarAnuncio () {
+      fetch('/api/advertisement/', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          advertiser: this.advertiser,
+          bathroom: this.advertiser,
+          cep: this.cep,
+          email: this.email,
+          lat: $('#id_latitude').val(),
+          lon: $('#id_longitude').val(),
+          phone: this.phone,
+          price: this.price,
+          ray: $('#id_radius').val(),
+          rooms: this.rooms
+        })
+      })
+        .then(resp => {
+          if (resp.status < 300) {
+            console.log(this.id)
+            console.log('Mudar para algo')
+          } else {
+            console.log('Mudar para outra coisa')
+          }
+        })
     }
   },
   mounted () {
