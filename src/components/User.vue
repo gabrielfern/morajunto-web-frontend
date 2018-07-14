@@ -15,10 +15,6 @@
         <input type="text" class="fields" id="contact" >
         <label name="dados">Telefone</label>
       </div>
-      <div class="input-field col s3">
-        <input type="text" class="fields" id="cpf" >
-        <label name="dados">CPF</label>
-      </div>
        <div class="input-field col s2">
         <input type="text" class="fields" id="age">
           <label name="dados">Idade</label>
@@ -54,14 +50,10 @@ export default {
       this.username = data.username
       this.id = data.id
       var contact = data.contact
-      var cpf = data.cpf
       $('#name').val(data.name)
       $('#username').val(this.username)
       contact = '(' + contact.toString().slice(0, 2) + ')' + contact.toString().slice(2, 6) + '-' + contact.toString().slice(5, 11)
       $('#contact').val(contact)
-      cpf = cpf.toString().slice(0, 3) + '.' + cpf.toString().slice(3, 6) + '.' + cpf.toString().slice(6, 9) + '-' +
-      cpf.toString().slice(9, 11)
-      $('#cpf').val(cpf)
       $('#age').val(data.age)
       $('#email').val(data.email)
       $('.fields').prop('disabled', true)
