@@ -83,12 +83,6 @@ export default {
           .then(() => {
             loginControl.logged = false
             this.$router.push({ path: '/' })
-            // eslint-disable-next-line
-            setTimeout(() => {
-              // eslint-disable-next-line
-              modalDeletedacc.open()
-              $('#modal-deletedacc-close').focus()
-            }, 500)
           })
       })
     }
