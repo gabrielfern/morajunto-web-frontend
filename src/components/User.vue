@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import loginControl from '../services/login_control'
+
 export default {
   data () {
     return {
@@ -75,12 +77,27 @@ export default {
       this.$router.push({ path: '/anuncios' })
     },
     deleteUser () {
-      fetch('/api/users/' + this.id, {
-        method: 'DELETE',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
+      // eslint-disable-next-line
+      modalDeleteacc.open()
+      $('#modal-deleteacc-close').focus()
+      addEventListener('deleteacc', () => {
+        fetch('/api/users/' + this.id, {
+          method: 'DELETE',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(() => {
+            loginControl.logged = false
+            this.$router.push({ path: '/' })
+            // eslint-disable-next-line
+            setTimeout(() => {
+              // eslint-disable-next-line
+              modalDeletedacc.open()
+              $('#modal-deletedacc-close').focus()
+            }, 500)
+          })
       })
     }
   },
