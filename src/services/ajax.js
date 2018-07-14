@@ -6,7 +6,7 @@ export default {
     'Content-Type': 'application/json'
   },
 
-  createUser (username, password, email, contact, cpf, age, name) {
+  createUser (name, age, email, contact, username, password) {
     return fetch('/api/users', {
       method: 'POST',
       headers: this.headers,
@@ -15,7 +15,6 @@ export default {
         password: password,
         email: email,
         contact: contact,
-        cpf: cpf,
         age: age,
         name: name
       })

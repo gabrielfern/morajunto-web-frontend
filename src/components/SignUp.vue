@@ -1,37 +1,35 @@
 <template>
-  <div class="row">
-    <div class="row">
-      <div class="input-field col s6">
-        <input type="text" v-model="name">
-        <label>Nome de Usuario</label>
+  <div>
+    <div class="container">
+      <div class="row">
+        <div class="input-field col s6">
+          <input type="text" v-model="name">
+          <label>Nome</label>
+        </div>
+        <div class="input-field col s2">
+         <input type="text" v-model="age">
+           <label>Idade</label>
+         </div>
       </div>
-      <div class="input-field col s6">
-        <input type="text" v-model="username">
-          <label>Username</label>
+      <div class="row">
+        <div class="input-field col s6">
+          <input type="text" v-model="email">
+          <label>Email</label>
+        </div>
+        <div class="input-field col s4">
+          <the-mask :mask="['(##)####-####']" id="contact" v-model="contact"/>
+          <label>Telefone</label>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s3">
-        <the-mask :mask="['(##)####-####']" id="contact" v-model="contact"/>
-        <label>Telefone</label>
-      </div>
-      <div class="input-field col s3">
-        <the-mask :mask="['###.###.###-##']" id="cpf" v-model="cpf"/>
-         <label>CPF</label>
-      </div>
-       <div class="input-field col s2">
-        <input type="text" v-model="age">
-          <label>Idade</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s6">
-        <input type="text" v-model="email">
-        <label>Email</label>
-      </div>
-      <div class="input-field col s6">
-        <input type="password" v-model="password">
-        <label>Senha</label>
+      <div class="row">
+        <div class="input-field col s4">
+          <input type="text" v-model="username">
+            <label>Nome de usuário</label>
+        </div>
+        <div class="input-field col s4">
+          <input type="password" v-model="password">
+          <label>Senha</label>
+        </div>
       </div>
     </div>
     <a href="/#/"><button class="btn waves-effect waves-light red lighten-2">Cancelar</button></a>
@@ -54,7 +52,6 @@ export default {
       email: '',
       username: '',
       contact: '',
-      cpf: '',
       age: '',
       password: '',
       failOnSignUp: false,
@@ -66,12 +63,11 @@ export default {
     createUser () {
       ajax.createUser(
         this.name,
-        this.email,
-        this.password,
-        parseInt(this.contact),
-        parseInt(this.cpf),
         parseInt(this.age),
-        this.username
+        this.email,
+        parseInt(this.contact),
+        this.username,
+        this.password
       )
         .then(resp => {
           if (resp.status < 300) {
