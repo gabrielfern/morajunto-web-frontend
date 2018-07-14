@@ -3,7 +3,7 @@
     <div class="row">
       <div class="input-field col s12">
         <input type="email" v-model="username">
-        <label>Nome de Usuario</label>
+        <label>Nome de Usuário</label>
       </div>
     </div>
     <div class="row">

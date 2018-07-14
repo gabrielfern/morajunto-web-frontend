@@ -30,11 +30,11 @@ export default {
       .then(resp => {
         if (resp.status < 300) {
           success = true
+          loginControl.logged = true
           return resp.json()
         }
       })
       .then(json => {
-        loginControl.logged = true
         loginControl.loginData = json
         return success
       })
