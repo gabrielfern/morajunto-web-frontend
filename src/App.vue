@@ -28,7 +28,6 @@
 
 <script>
 import loginControl from './services/login_control'
-window.loginControl = loginControl
 
 export default {
   name: 'App',
@@ -46,8 +45,13 @@ export default {
     },
 
     logout () {
-      loginControl.logged = false
-      this.$router.push({ path: '/' })
+      // eslint-disable-next-line
+      modalLogout.open()
+      $('#modal-logout-close').focus()
+      addEventListener('logout', () => {
+        loginControl.logged = false
+        this.$router.push({ path: '/' })
+      })
     }
   }
 }

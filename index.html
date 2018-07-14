@@ -24,11 +24,23 @@
         <button id="modal-signup-close" class="btn" onclick="modalSignup.close()">Ok</button>
       </div>
     </div>
+    <div id="modal-logout" class="modal">
+      <div class="modal-content">
+        <h4>Tem certeza de que deseja sair?</h4>
+      </div>
+      <div class="modal-footer">
+        <button class="btn red lighten-2" onclick="modalLogout.close()">Cancelar</button>
+        <button id="modal-logout-close" class="btn" onclick="modalLogout.close(); window.dispatchEvent(logout)">Sim</button>
+      </div>
+    </div>
     <script>
+      logout = new Event('logout')
+
       addEventListener('DOMContentLoaded', () => {
         M.Sidenav.init($('.sidenav'))
         M.Modal.init($('.modal'))
         modalSignup = M.Modal.getInstance($('#modal-signup'))
+        modalLogout = M.Modal.getInstance($('#modal-logout'))
       })
     </script>
   </body>
