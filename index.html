@@ -16,9 +16,19 @@
   </head>
   <body>
     <div id="app"></div>
+    <div id="modal-signup" class="modal">
+      <div class="modal-content">
+        <h4 id="modal-signup-msg"></h4>
+      </div>
+      <div class="modal-footer">
+        <button id="modal-signup-close" class="btn" onclick="modalSignup.close()">Ok</button>
+      </div>
+    </div>
     <script>
       addEventListener('DOMContentLoaded', () => {
         M.Sidenav.init($('.sidenav'))
+        M.Modal.init($('.modal'))
+        modalSignup = M.Modal.getInstance($('#modal-signup'))
       })
     </script>
   </body>

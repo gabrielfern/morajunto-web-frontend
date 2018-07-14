@@ -30,11 +30,9 @@
         <label>Senha</label>
       </div>
     </div>
-    <a href="/#/"><button class="btn waves-effect waves-light red lighten-2">Cancelar</button></a>
-    <button class="waves-effect waves-light btn" @click="createUser" :disabled="!username || !email || !password">Confirmar</button>
-    <a href="/#/login"><button class="waves-effect waves-light btn blue-grey right">Entrar</button></a>
-    <div class="card-panel red lighten-2" v-if="failOnSignUp">Usuário já existe</div>
-    <div class="card-panel teal lighten-2 white-text" v-if="successOnSignUp">Cadastrado com sucesso</div>
+    <a href="/#/"><button class="btn red lighten-2">Cancelar</button></a>
+    <button class="btn" @click="createUser" :disabled="!username || !email || !password">Confirmar</button>
+    <a href="/#/login"><button class="btn blue-grey right">Entrar</button></a>
   </div>
 </template>
 
@@ -51,9 +49,7 @@ export default {
       username: '',
       contact: '',
       age: '',
-      password: '',
-      failOnSignUp: false,
-      successOnSignUp: false
+      password: ''
     }
   },
 
@@ -77,12 +73,14 @@ export default {
     },
 
     showSignUpResult (succeeded) {
-      this.failOnSignUp = this.successOnSignUp = false
       if (succeeded) {
-        this.successOnSignUp = true
+        $('#modal-signup-msg')[0].innerText = 'Cadastrado com sucesso'
       } else {
-        this.failOnSignUp = true
+        $('#modal-signup-msg')[0].innerText = 'Usuário já existe'
       }
+      // eslint-disable-next-line
+      modalSignup.open()
+      $('#modal-signup-close').focus()
     }
   }
 }
