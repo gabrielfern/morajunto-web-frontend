@@ -15,7 +15,6 @@
     <a href="/#/"><button class="btn waves-effect waves-light red lighten-2">Cancelar</button></a>
     <button class="waves-effect waves-light btn" @click="loginUser" :disabled="!username || !password">Entrar</button>
     <a href="/#/signup"><button class="waves-effect waves-light btn blue-grey right">Cadastrar</button></a>
-    <div class="card-panel red lighten-2" v-if="failLogin"> Login ou senha inválidos</div>
   </div>
 </template>
 
@@ -26,8 +25,7 @@ export default {
   data () {
     return {
       username: '',
-      password: '',
-      failLogin: false
+      password: ''
     }
   },
 
@@ -41,7 +39,9 @@ export default {
       if (success) {
         this.$router.push({ path: '/' })
       } else {
-        this.failLogin = true
+        // eslint-disable-next-line
+        modalErrorlogin.open()
+        $('#modal-errorlogin-close').focus()
       }
     }
   }

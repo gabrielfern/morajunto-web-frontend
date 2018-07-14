@@ -42,6 +42,14 @@
         <button id="modal-deleteacc-close" class="btn" onclick="modalDeleteacc.close(); window.dispatchEvent(deleteacc)">Sim</button>
       </div>
     </div>
+    <div id="modal-errorlogin" class="modal">
+      <div class="modal-content">
+        <h4>Login ou senha inválidos</h4>
+      </div>
+      <div class="modal-footer">
+        <button id="modal-errorlogin-close" class="btn" onclick="modalErrorlogin.close()">Ok</button>
+      </div>
+    </div>
     <script>
       logout = new Event('logout')
       deleteacc = new Event('deleteacc')
@@ -52,6 +60,7 @@
         modalSignup = M.Modal.getInstance($('#modal-signup'))
         modalLogout = M.Modal.getInstance($('#modal-logout'))
         modalDeleteacc = M.Modal.getInstance($('#modal-deleteacc'))
+        modalErrorlogin = M.Modal.getInstance($('#modal-errorlogin'))
       })
     </script>
   </body>
