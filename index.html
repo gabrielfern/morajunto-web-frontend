@@ -42,14 +42,6 @@
         <button id="modal-deleteacc-close" class="btn" onclick="modalDeleteacc.close(); window.dispatchEvent(deleteacc)">Sim</button>
       </div>
     </div>
-    <div id="modal-deletedacc" class="modal">
-      <div class="modal-content">
-        <h4>Conta deletada com sucesso</h4>
-      </div>
-      <div class="modal-footer">
-        <button id="modal-deletedacc-close" class="btn" onclick="modalDeletedacc.close()">Ok</button>
-      </div>
-    </div>
     <script>
       logout = new Event('logout')
       deleteacc = new Event('deleteacc')
@@ -60,7 +52,6 @@
         modalSignup = M.Modal.getInstance($('#modal-signup'))
         modalLogout = M.Modal.getInstance($('#modal-logout'))
         modalDeleteacc = M.Modal.getInstance($('#modal-deleteacc'))
-        modalDeletedacc = M.Modal.getInstance($('#modal-deletedacc'))
       })
     </script>
   </body>
