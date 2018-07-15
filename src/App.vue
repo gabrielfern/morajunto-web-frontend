@@ -28,6 +28,7 @@
 
 <script>
 import loginControl from './services/login_control'
+import ajax from './services/ajax'
 
 export default {
   name: 'App',
@@ -46,8 +47,21 @@ export default {
       $('#modal-logout-close').focus()
       addEventListener('logout', () => {
         loginControl.logged = false
+        localStorage.clear()
         this.$router.push({ path: '/' })
       })
+    }
+  },
+
+  beforeMount () {
+    if (localStorage.getItem('username')) {
+      ajax.getUserByUsername(localStorage.getItem('username'))
+        .then(resp => {
+          if (resp.data) {
+            loginControl.loginData.user = resp.data
+            loginControl.logged = true
+          }
+        })
     }
   }
 }

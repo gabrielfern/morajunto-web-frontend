@@ -36,6 +36,9 @@ export default {
       })
       .then(json => {
         loginControl.loginData = json
+        if (json.user) {
+          localStorage.setItem('username', json.user.username)
+        }
         return success
       })
   },
@@ -61,6 +64,11 @@ export default {
       method: 'DELETE',
       headers: this.headers
     })
+  },
+
+  getUserByUsername (username) {
+    return fetch('/api/users/' + username)
+      .then(resp => resp.json())
   },
 
   getAllUsers () {
