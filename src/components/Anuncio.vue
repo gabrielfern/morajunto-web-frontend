@@ -29,7 +29,8 @@
           <label name="dados">Email</label>
       </div>
       <div class="input-field col s4">
-          <input type="text" id="telefone" class="fields">
+          <the-mask :mask="['(##)####-####']" id="telefone" class="fields"
+          v-model="contact"/>
           <label name="dados">Telefone</label>
       </div>
     </div>
@@ -68,13 +69,15 @@
 </template>
 
 <script>
-import {TheMask} from 'vue-the-mask'
+import { TheMask } from 'vue-the-mask'
+
 export default {
-  components: {TheMask},
+  components: { TheMask },
   data () {
     return {
       id: '',
-      username: ''
+      username: '',
+      contact: ''
     }
   },
   methods: {
@@ -85,7 +88,7 @@ export default {
       $('#city').val(data.city)
       $('#anunciante').val(data.advertiser)
       $('#email').val(data.email)
-      $('#telefone').val(data.phone)
+      this.contact = data.phone
       $('#quarto').val(data.rooms)
       $('#preco').val(data.price)
       $('#banheiro').val(data.bathroom)
