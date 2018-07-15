@@ -30,11 +30,23 @@
         <label>Senha</label>
       </div>
     </div>
-    <div class="col s9"><a href="#" @click="goToCadastrarAnuncio"><button class="waves-effect waves-light btn">Criar anúncio</button></a>
-    <a href="#" @click="goToUpdateUser"><button class="btn waves-effect waves-light blue lighten-2">Editar senha</button></a>
-      <a href="#" @click="goToAnuncios"><button class="btn waves-effect waves-light blue lighten-2">Anúncios</button></a>
+    <div class="row" v-if="editMode">
+      <div class="right">
+        <button class="btn waves-effect waves-light red lighten-2" @click="getOutEditMode">Cancelar</button>
+        <button class="waves-effect waves-light btn" @click="submitEditMode">Confirmar</button>
       </div>
-    <div class="s12 m4 l2"><a href="#" @click="deleteUser"><button class="btn waves-effect waves-light red lighten-2 right">Excluir conta</button></a>
+    </div>
+    <div class="row" v-if="!editMode">
+      <button class="btn right" @click="enterEditMode"><i class="material-icons">edit</i></button>
+    </div>
+    <div class="row" v-if="!editMode">
+      <div class="col s9"><a href="#" @click="goToCadastrarAnuncio"><button class="waves-effect waves-light btn">Criar anúncio</button></a>
+        <a href="#" @click="goToUpdateUser"><button class="btn waves-effect waves-light blue lighten-2">Editar senha</button></a>
+        <a href="#" @click="goToAnuncios"><button class="btn waves-effect waves-light blue lighten-2">Anúncios</button></a>
+      </div>
+      <div class="s12 m4 l2">
+        <a href="#" @click="deleteUser"><button class="btn waves-effect waves-light red lighten-2 right">Excluir conta</button></a>
+      </div>
     </div>
   </div>
 </template>
@@ -49,7 +61,8 @@ export default {
 
   data () {
     return {
-      user: loginControl.loginData.user
+      user: loginControl.loginData.user,
+      editMode: false
     }
   },
 
@@ -77,12 +90,31 @@ export default {
             this.$router.push({ path: '/' })
           })
       })
+    },
+
+    getOutEditMode () {
+      this.user = loginControl.loginData.user
+      this.editMode = false
+      $('label').addClass('active')
+      $('input').prop('disabled', true)
+    },
+
+    enterEditMode () {
+      this.user = Object.assign({}, loginControl.loginData.user)
+      this.editMode = true
+      $('input').prop('disabled', false)
+    },
+
+    submitEditMode () {
+      loginControl.loginData.user = this.user
+      ajax.updateUser()
+      this.getOutEditMode()
     }
   },
 
   mounted () {
     $('label').addClass('active')
-    $('input').prop('disabled', 'true')
+    $('input').prop('disabled', true)
   }
 }
 </script>
