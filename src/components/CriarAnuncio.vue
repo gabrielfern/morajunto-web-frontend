@@ -79,9 +79,11 @@
 </template>
 
 <script>
-import {TheMask} from 'vue-the-mask'
+import loginControl from '../services/login_control'
+import { TheMask } from 'vue-the-mask'
+
 export default {
-  components: {TheMask},
+  components: { TheMask },
   data () {
     return {
       cep: '',
@@ -137,7 +139,8 @@ export default {
           phone: this.phone,
           price: parseInt(this.price),
           ray: $('#id_radius').val(),
-          rooms: parseInt(this.rooms)
+          rooms: parseInt(this.rooms),
+          username: loginControl.loginData.user.username
         })
       })
         .then(resp => {
