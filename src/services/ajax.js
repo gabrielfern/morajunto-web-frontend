@@ -76,6 +76,11 @@ export default {
       .then(resp => resp.json())
   },
 
+  getAllAnuncios () {
+    return fetch('/api/advertisements')
+      .then(resp => resp.json())
+  },
+
   logAllUsers () {
     this.getAllUsers()
       .then(data => console.log(data))
