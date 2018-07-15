@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div >
     <h5 style="color: teal;">Criar anúncio</h5>
     <div class="row">
       <div class="input-field col s2">
@@ -14,19 +14,19 @@
     </div>
     <div class="row">
         <div class="input-field col s4">
-          <input id="rua">
+          <input id="rua" >
           <label name="endereco">Endereço</label>
         </div>
       <div class="input-field col s3">
-          <input id="bairro">
+          <input id="bairro" >
         <label name="endereco">Bairro:</label>
       </div>
       <div class="input-field col s1">
-         <input id="estado" >
+         <input id="estado">
         <label name="endereco">Estado</label>
       </div>
       <div class="input-field col s4">
-         <input id="cidade" >
+         <input id="cidade">
         <label name="endereco">Cidade</label>
       </div>
     </div>
@@ -40,7 +40,7 @@
           <label>Email</label>
       </div>
       <div class="input-field col s4">
-         <input id="phone" type="text" v-model="phone">
+        <the-mask :mask="['(##)#####-####']" id="phone" v-model="phone"/>
         <label>Telefone</label>
       </div>
     </div>
@@ -61,7 +61,6 @@
     <div>
       <div class="row mapheight" id="maparea" >
         <div id="map" class="map map_all_space"></div>
-        <button id="map_print" type="hidden" class="no_display"></button>
       </div>
       <div>
         <div class="col">
@@ -86,14 +85,10 @@ export default {
   data () {
     return {
       cep: '',
-      street: '',
       advertiser: '',
       email: '',
       rooms: '',
       price: '',
-      city: '',
-      state: '',
-      neighborhood: '',
       phone: '',
       bathroom: '',
       failLogin: false,
@@ -135,6 +130,9 @@ export default {
           cep: this.cep,
           email: this.email,
           lat: $('#id_latitude').val(),
+          state: $('#estado').val(),
+          city: $('#cidade').val(),
+          street: $('#rua').val(),
           lon: $('#id_longitude').val(),
           phone: this.phone,
           price: parseInt(this.price),

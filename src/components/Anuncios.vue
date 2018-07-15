@@ -4,19 +4,19 @@
     <table id="example" class="mdl-data-table" style="width:100%">
         <thead>
             <tr>
-                <th>Anunciante</th>
-                <th>Email</th>
+                <th>Cidade</th>
+                <th>Estado</th>
                 <th>Quartos</th>
                 <th>Banheiros</th>
             </tr>
         </thead>
-        <tbody id="test">
+        <tbody>
         <tr v-for="item in object" :key="item.id" >
           <td>
-            <a v-bind:href="'#/anuncio/' + item.id" style="display: block; width:100%">{{item.advertiser}}</a>
+            <a v-bind:href="'#/anuncio/' + item.id" style="display: block; width:100%">{{item.city}}</a>
           </td>
           <td>
-             <a v-bind:href="'#/anuncio/' + item.id" style="display: block; width:100%">{{item.email  }}</a>
+             <a v-bind:href="'#/anuncio/' + item.id" style="display: block; width:100%">{{item.state  }}</a>
           </td>
           <td>
              <a v-bind:href="'#/anuncio/' + item.id" style="display: block; width:100%">{{item.rooms  }}</a>
@@ -27,6 +27,8 @@
         </tr>
         </tbody>
     </table>
+    <br>
+    <a href="/#/"><button class="btn red lighten-2">Cancelar</button></a>
     </div>
   </div>
 </template>

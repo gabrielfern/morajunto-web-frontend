@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div>
     <h5 style="color: teal;">Anúncio</h5>
     <div class="row">
       <div class="input-field col s3">
@@ -10,9 +10,13 @@
           <input type="text" id="rua" class="fields">
           <label name="dados">Endereço</label>
       </div>
-      <div class="input-field col s4">
+      <div class="input-field col s1">
           <input type="text" id="estado" class="fields">
           <label name="dados">Estado</label>
+      </div>
+      <div class="input-field col s3">
+          <input type="text" id="city" class="fields">
+          <label name="dados">Cidade</label>
       </div>
     </div>
     <div class="row">
@@ -60,6 +64,7 @@
         </div>
       </div>
     </div>
+    <a href="/#/"><button class="btn red lighten-2">Cancelar</button></a>
   </div>
 </template>
 
@@ -75,22 +80,26 @@ export default {
   },
   methods: {
     processing (data) {
-      $('#cep').val('ceo')
-      $('#rua').val('rua')
-      $('#estado').val('estado')
-      $('#anunciante').val('anunciante')
-      $('#email').val('email')
-      $('#telefone').val('telefone')
-      $('#quarto').val('quarto')
-      $('#preco').val('preco')
-      $('#banheiro').val('banheiro')
-      // getGeo(result.logradouro, result.localidade, result.uf)
+      $('#cep').val(data.cep)
+      $('#rua').val(data.street)
+      $('#estado').val(data.state)
+      $('#city').val(data.city)
+      $('#anunciante').val(data.advertiser)
+      $('#email').val(data.email)
+      $('#telefone').val(data.phone)
+      $('#quarto').val(data.rooms)
+      $('#preco').val(data.price)
+      $('#banheiro').val(data.bathroom)
       $('.fields').prop('disabled', true)
       $('[name=dados]').prop('class', 'active')
+      /* eslint-disable no-undef */
+      setTimeout(function () {
+        getGeo(data.street, data.city, data.state)
+      }, 2000)
     }
   },
   mounted () {
-    fetch('/api/advertisements/', {
+    fetch('/api/advertisements/' + this.$route.params.id, {
       method: 'GET'
     })
       .then(resp => resp.json())
