@@ -11,7 +11,7 @@ export default {
   computed: {
     msg () {
       if (loginControl.logged) {
-        return loginControl.loginData.user.username
+        return loginControl.loginData.user.name
       } else {
         return 'ao MoraJunto'
       }

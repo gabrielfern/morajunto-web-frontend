@@ -38,10 +38,10 @@
 
 <script>
 import ajax from '../services/ajax'
-import {TheMask} from 'vue-the-mask'
+import { TheMask } from 'vue-the-mask'
 
 export default {
-  components: {TheMask},
+  components: { TheMask },
   data () {
     return {
       name: '',

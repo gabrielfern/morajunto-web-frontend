@@ -2,28 +2,32 @@
   <div class="row">
     <div class="row">
       <div class="input-field col s6">
-        <input type="text" class="fields" id="name" >
-        <label  name="dados">Nome de Usuario</label>
+        <input type="text" v-model="user.name">
+        <label>Nome</label>
       </div>
-      <div class="input-field col s6">
-        <input type="text" class="fields" id="username" >
-          <label name="dados" >Username</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s3">
-        <input type="text" class="fields" id="contact" >
-        <label name="dados">Telefone</label>
-      </div>
-       <div class="input-field col s2">
-        <input type="text" class="fields" id="age">
-          <label name="dados">Idade</label>
-      </div>
+      <div class="input-field col s2">
+       <input type="text" v-model="user.age">
+         <label>Idade</label>
+       </div>
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <input type="text" class="fields" id="email" >
-        <label name="dados">Email</label>
+        <input type="text" v-model="user.email">
+        <label>Email</label>
+      </div>
+      <div class="input-field col s4">
+        <the-mask :mask="['(##)####-####']" id="contact" v-model="user.contact"/>
+        <label>Telefone</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s4">
+        <input type="text" v-model="user.username">
+        <label>Nome de usuário</label>
+      </div>
+      <div class="input-field col s4">
+        <input type="password" v-model="user.password">
+        <label>Senha</label>
       </div>
     </div>
     <div class="col s9"><a href="#" @click="goToCadastrarAnuncio"><button class="waves-effect waves-light btn">Criar anúncio</button></a>
@@ -31,34 +35,22 @@
       <a href="#" @click="goToAnuncios"><button class="btn waves-effect waves-light blue lighten-2">Anúncios</button></a>
       </div>
     <div class="s12 m4 l2"><a href="#" @click="deleteUser"><button class="btn waves-effect waves-light red lighten-2 right">Excluir conta</button></a>
-      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import loginControl from '../services/login_control'
+import { TheMask } from 'vue-the-mask'
 
 export default {
+  components: { TheMask },
   data () {
     return {
-      id: '',
-      username: ''
+      user: loginControl.loginData.user
     }
   },
   methods: {
-    processing (data) {
-      this.username = data.username
-      this.id = data.id
-      var contact = data.contact
-      $('#name').val(data.name)
-      $('#username').val(this.username)
-      contact = '(' + contact.toString().slice(0, 2) + ')' + contact.toString().slice(2, 6) + '-' + contact.toString().slice(5, 11)
-      $('#contact').val(contact)
-      $('#age').val(data.age)
-      $('#email').val(data.email)
-      $('.fields').prop('disabled', true)
-      $('[name=dados]').prop('class', 'active')
-    },
     goToCadastrarAnuncio () {
       this.$router.push({ path: '/criarAnuncio' })
     },
@@ -87,14 +79,10 @@ export default {
       })
     }
   },
-  mounted: function () {
-    this.$nextTick(function () {
-      fetch('/api/users/' + this.$route.params.username, {
-        method: 'GET'
-      })
-        .then(resp => resp.json())
-        .then(data => this.processing(data.data))
-    })
+
+  mounted () {
+    $('label').addClass('active')
+    $('input').prop('disabled', 'true')
   }
 }
 </script>
