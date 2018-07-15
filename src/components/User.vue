@@ -45,7 +45,7 @@
     </div>
     <div class="row" v-if="!editMode">
       <button class="btn waves-effect waves-light" @click="goToCadastrarAnuncio">Criar anúncio</button>
-      <a href="#"><button class="waves-effect waves-light btn">Meus Anúncios</button></a>
+      <a href="/#/user/anuncios"><button class="waves-effect waves-light btn">Meus Anúncios</button></a>
       <button class="btn waves-effect waves-light red lighten-2 right" @click="deleteUser">Excluir conta</button>
     </div>
   </div>

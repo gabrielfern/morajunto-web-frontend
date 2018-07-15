@@ -8,6 +8,7 @@ import Anuncios from '../components/Anuncios'
 import CriarAnuncio from '../components/CriarAnuncio'
 import Anuncio from '../components/Anuncio'
 import Home from '../components/Home'
+import UserAnuncios from '../components/UserAnuncios'
 
 Vue.use(Router)
 export default new Router({
@@ -51,6 +52,11 @@ export default new Router({
       path: '/user',
       name: 'user',
       component: User
+    },
+    {
+      path: '/user/anuncios',
+      name: 'userAnuncios',
+      component: UserAnuncios
     }
   ]
 })
