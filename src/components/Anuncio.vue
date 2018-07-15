@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div>
     <h5 style="color: teal;">Anúncio</h5>
     <div class="row">
       <div class="input-field col s3">
@@ -64,6 +64,7 @@
         </div>
       </div>
     </div>
+    <a href="/#/"><button class="btn red lighten-2">Cancelar</button></a>
   </div>
 </template>
 
