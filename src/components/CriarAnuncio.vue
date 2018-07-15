@@ -144,11 +144,7 @@ export default {
         })
       })
         .then(resp => {
-          if (resp.status < 300) {
-            console.log(this.id)
-          } else {
-            console.log('Mudar para outra coisa')
-          }
+          this.$router.push({ path: '/user' })
         })
     }
   },
