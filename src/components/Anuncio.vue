@@ -126,8 +126,10 @@ export default {
     })
       .then(resp => resp.json())
       .then(data => {
-        if (loginControl.loginData.user.username === data.data.username) {
-          this.owner = true
+        if (loginControl.logged) {
+          if (loginControl.loginData.user.username === data.data.username) {
+            this.owner = true
+          }
         }
         this.processing(data.data)
       })
