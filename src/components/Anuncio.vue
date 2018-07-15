@@ -65,10 +65,13 @@
       </div>
     </div>
     <a href="/#/anuncios"><button class="btn lighten-2">Ok</button></a>
+    <button class="btn waves-effect waves-light red lighten-2 right" @click="deleteAnuncio">Excluir anúncio</button>
   </div>
 </template>
 
 <script>
+import loginControl from '../services/login_control'
+import ajax from '../services/ajax'
 import { TheMask } from 'vue-the-mask'
 
 export default {
@@ -81,6 +84,7 @@ export default {
       cep: ''
     }
   },
+
   methods: {
     processing (data) {
       this.cep = data.cep
@@ -99,8 +103,13 @@ export default {
       setTimeout(function () {
         getGeo(data.street, data.city, data.state)
       }, 2000)
+    },
+
+    deleteAnuncio () {
+      ajax.deleteAnuncioById(this.$route.params.id)
     }
   },
+
   mounted () {
     fetch('/api/advertisements/' + this.$route.params.id, {
       method: 'GET'

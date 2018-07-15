@@ -44,11 +44,9 @@
       <button class="btn right" @click="enterEditMode"><i class="material-icons">edit</i></button>
     </div>
     <div class="row" v-if="!editMode">
-      <div class="col s9"><a href="#" @click="goToCadastrarAnuncio"><button class="waves-effect waves-light btn">Criar anúncio</button></a>
-      </div>
-      <div class="s12 m4 l2">
-        <a href="#" @click="deleteUser"><button class="btn waves-effect waves-light red lighten-2 right">Excluir conta</button></a>
-      </div>
+      <button class="btn waves-effect waves-light" @click="goToCadastrarAnuncio">Criar anúncio</button>
+      <a href="#"><button class="waves-effect waves-light btn">Meus Anúncios</button></a>
+      <button class="btn waves-effect waves-light red lighten-2 right" @click="deleteUser">Excluir conta</button>
     </div>
   </div>
 </template>

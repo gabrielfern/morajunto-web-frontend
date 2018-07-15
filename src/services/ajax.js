@@ -106,5 +106,11 @@ export default {
           })
         }
       })
+  },
+
+  deleteAnuncioById (id) {
+    fetch('/api/advertisements/' + id, {
+      method: 'DELETE'
+    })
   }
 }
