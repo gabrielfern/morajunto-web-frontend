@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h5 style="color: teal">Cadastrar uma nova conta</h5>
     <div class="row">
       <div class="input-field col s6">
         <input type="text" v-model="name">

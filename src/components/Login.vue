@@ -1,5 +1,6 @@
 <template>
   <div class="row">
+    <h5 style="color: teal">Entrar na conta</h5>
     <div class="row">
       <div class="input-field col s12">
         <input type="email" v-model="username">
