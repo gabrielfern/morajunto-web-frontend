@@ -11,6 +11,7 @@
       </div>
   </div>
 </template>
+
 <script>
 import loginControl from '../services/login_control'
 

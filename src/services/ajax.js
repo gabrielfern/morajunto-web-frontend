@@ -40,6 +40,22 @@ export default {
       })
   },
 
+  updateUser () {
+    let user = loginControl.loginData.user
+    fetch('/api/users/' + user.id, {
+      method: 'PUT',
+      headers: this.headers,
+      body: JSON.stringify({
+        username: user.username,
+        password: user.password,
+        email: user.email,
+        contact: user.contact,
+        age: user.age,
+        name: user.name
+      })
+    })
+  },
+
   getAllUsers () {
     return fetch('/api/users')
       .then(resp => resp.json())
