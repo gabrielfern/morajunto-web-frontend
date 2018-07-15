@@ -78,6 +78,7 @@
     <a href="#" @click="criarAnuncio"><button class="waves-effect waves-light btn">Criar anúncio</button></a>
   </div>
 </template>
+
 <script>
 import {TheMask} from 'vue-the-mask'
 export default {
