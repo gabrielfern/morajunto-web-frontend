@@ -65,7 +65,7 @@
       </div>
     </div>
     <a href="/#/anuncios"><button class="btn lighten-2">Ok</button></a>
-    <button class="btn waves-effect waves-light red lighten-2 right" @click="deleteAnuncio">Excluir anúncio</button>
+    <button class="btn waves-effect waves-light red lighten-2 right" @click="deleteAnuncio" v-if="owner">Excluir anúncio</button>
   </div>
 </template>
 
@@ -81,7 +81,8 @@ export default {
       id: '',
       username: '',
       contact: '',
-      cep: ''
+      cep: '',
+      owner: false
     }
   },
 
@@ -106,7 +107,15 @@ export default {
     },
 
     deleteAnuncio () {
-      ajax.deleteAnuncioById(this.$route.params.id)
+      // eslint-disable-next-line
+      modalDeleteanuncio.open()
+      $('#modal-deleteanuncio-close').focus()
+      addEventListener('deleteanuncio', () => {
+        ajax.deleteAnuncioById(this.$route.params.id)
+          .then(() => {
+            this.$router.push({ path: '/anuncios' })
+          })
+      })
     }
   },
 
@@ -115,7 +124,12 @@ export default {
       method: 'GET'
     })
       .then(resp => resp.json())
-      .then(data => this.processing(data.data))
+      .then(data => {
+        if (loginControl.loginData.user.username === data.data.username) {
+          this.owner = true
+        }
+        this.processing(data.data)
+      })
     /* eslint-disable no-undef */
     runMaps()
     evenMp()

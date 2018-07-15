@@ -58,9 +58,19 @@
         <button id="modal-erroruserupdate-close" class="btn" onclick="modalErroruserupdate.close()">Ok</button>
       </div>
     </div>
+    <div id="modal-deleteanuncio" class="modal">
+      <div class="modal-content">
+        <h4>Tem certeza de que deseja excluir esse anúncio?</h4>
+      </div>
+      <div class="modal-footer">
+        <button class="btn red lighten-2" onclick="modalDeleteanuncio.close()">Cancelar</button>
+        <button id="modal-deleteanuncio-close" class="btn" onclick="modalDeleteanuncio.close(); window.dispatchEvent(deleteanuncio)">Sim</button>
+      </div>
+    </div>
     <script>
       logout = new Event('logout')
       deleteacc = new Event('deleteacc')
+      deleteanuncio = new Event('deleteanuncio')
 
       addEventListener('DOMContentLoaded', () => {
         M.Sidenav.init($('.sidenav'))
@@ -71,6 +81,7 @@
         modalDeleteacc = M.Modal.getInstance($('#modal-deleteacc'))
         modalErrorlogin = M.Modal.getInstance($('#modal-errorlogin'))
         modalErroruserupdate = M.Modal.getInstance($('#modal-erroruserupdate'))
+        modalDeleteanuncio = M.Modal.getInstance($('#modal-deleteanuncio'))
       })
     </script>
   </body>

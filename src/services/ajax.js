@@ -109,7 +109,7 @@ export default {
   },
 
   deleteAnuncioById (id) {
-    fetch('/api/advertisements/' + id, {
+    return fetch('/api/advertisements/' + id, {
       method: 'DELETE'
     })
   }
