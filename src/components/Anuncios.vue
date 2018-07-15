@@ -5,7 +5,7 @@
       <thead>
         <tr>
           <th>Cidade</th>
-          <th>Bairro</th>
+          <th>Rua</th>
           <th>Anunciante</th>
           <th>Quartos</th>
           <th>Preço</th>
@@ -14,7 +14,7 @@
       <tbody>
         <tr class="anuncio" v-for="anuncio in anuncios" :key="anuncio.city" @click="enterAnuncio(anuncio.id)">
           <td>{{ anuncio.city }}</td>
-          <td>{{ anuncio.neighborhood }}</td>
+          <td>{{ anuncio.street }}</td>
           <td>{{ anuncio.advertiser }}</td>
           <td>{{ anuncio.rooms }}</td>
           <td>{{ anuncio.price }}</td>

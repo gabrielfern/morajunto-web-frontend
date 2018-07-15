@@ -50,7 +50,6 @@
     <div>
       <div class="row mapheight" id="maparea" >
         <div id="map" class="map map_all_space"></div>
-        <button id="map_print" type="hidden" class="no_display"></button>
       </div>
       <div>
         <div class="col">
@@ -64,7 +63,7 @@
         </div>
       </div>
     </div>
-    <a href="/#/"><button class="btn red lighten-2">Cancelar</button></a>
+    <a href="/#/anuncios"><button class="btn lighten-2">Ok</button></a>
   </div>
 </template>
 

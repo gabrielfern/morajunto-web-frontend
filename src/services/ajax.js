@@ -95,5 +95,16 @@ export default {
           })
         }
       })
+  },
+
+  deleteAllAnuncios () {
+    this.getAllAnuncios()
+      .then(data => {
+        for (let anuncio of data.data) {
+          fetch('/api/advertisements/' + anuncio.id, {
+            method: 'DELETE'
+          })
+        }
+      })
   }
 }
