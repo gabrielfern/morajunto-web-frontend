@@ -21,11 +21,11 @@
           <input id="bairro" >
         <label name="endereco">Bairro:</label>
       </div>
-      <div class="input-field col s1">
+      <div class="input-field col s2">
          <input id="estado">
         <label name="endereco">Estado</label>
       </div>
-      <div class="input-field col s4">
+      <div class="input-field col s3">
          <input id="cidade">
         <label name="endereco">Cidade</label>
       </div>
@@ -146,7 +146,6 @@ export default {
         .then(resp => {
           if (resp.status < 300) {
             console.log(this.id)
-            console.log('Mudar para algo')
           } else {
             console.log('Mudar para outra coisa')
           }
