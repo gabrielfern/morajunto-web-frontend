@@ -50,6 +50,14 @@
         <button id="modal-errorlogin-close" class="btn" onclick="modalErrorlogin.close()">Ok</button>
       </div>
     </div>
+    <div id="modal-erroruserupdate" class="modal">
+      <div class="modal-content">
+        <h4>Por favor escolha uma nova senha, ou click no botão de segurança para continuar usando a antiga</h4>
+      </div>
+      <div class="modal-footer">
+        <button id="modal-erroruserupdate-close" class="btn" onclick="modalErroruserupdate.close()">Ok</button>
+      </div>
+    </div>
     <script>
       logout = new Event('logout')
       deleteacc = new Event('deleteacc')
@@ -62,6 +70,7 @@
         modalLogout = M.Modal.getInstance($('#modal-logout'))
         modalDeleteacc = M.Modal.getInstance($('#modal-deleteacc'))
         modalErrorlogin = M.Modal.getInstance($('#modal-errorlogin'))
+        modalErroruserupdate = M.Modal.getInstance($('#modal-erroruserupdate'))
       })
     </script>
   </body>
