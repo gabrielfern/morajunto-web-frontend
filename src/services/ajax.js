@@ -36,7 +36,8 @@ export default {
       })
       .then(json => {
         loginControl.loginData = json
-        if (json.user) {
+        console.log(json)
+        if (json && json.user) {
           localStorage.setItem('username', json.user.username)
         }
         return success
