@@ -47,7 +47,7 @@
     <div class="row">
       <div class="input-field col s2">
          <input id="bathroom" type="text" v-model="bathroom">
-        <label>Banheiro</label>
+        <label>Qtd Banheiros</label>
       </div>
         <div class="input-field col s2">
           <input id="price" type="text" v-model="price">
@@ -55,7 +55,7 @@
         </div>
       <div class="input-field col s2">
          <input id="rooms" type="text" v-model="rooms">
-        <label>Quartos</label>
+        <label>Qtd Quartos</label>
       </div>
     </div>
     <div>
