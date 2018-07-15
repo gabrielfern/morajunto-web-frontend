@@ -64,8 +64,9 @@
         </div>
       </div>
     </div>
-    <a href="/#/anuncios"><button class="btn lighten-2">Ok</button></a>
-    <button class="btn waves-effect waves-light red lighten-2 right" @click="deleteAnuncio" v-if="owner">Excluir anúncio</button>
+    <div class="row">
+      <button class="btn waves-effect waves-light red lighten-2 right" @click="deleteAnuncio" v-if="owner">Excluir anúncio</button>
+    </div>
   </div>
 </template>
 
