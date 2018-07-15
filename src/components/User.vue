@@ -1,5 +1,6 @@
 <template>
   <div class="row">
+    <h5 style="color: teal">Dados do usuário</h5>
     <div class="row">
       <div class="input-field col s6">
         <input type="text" v-model="user.name">
