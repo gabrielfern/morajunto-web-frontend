@@ -32,16 +32,16 @@
     </div>
     <div class="row">
         <div class="input-field col s4">
-          <input id="advertiser" type="text" v-model="advertiser">
-          <label>Anunciante</label>
+          <input id="advertiser" type="text" v-model="advertiser" disabled>
+          <label class="active">Anunciante</label>
         </div>
       <div class="input-field col s4">
-          <input id="email" type="text" v-model="email">
-          <label>Email</label>
+          <input id="email" type="text" v-model="email" disabled>
+          <label class="active">Email</label>
       </div>
       <div class="input-field col s4">
-        <the-mask :mask="['(##)#####-####']" id="phone" v-model="phone"/>
-        <label>Telefone</label>
+        <the-mask :mask="['(##)####-####']" id="phone" v-model="phone" disabled/>
+        <label class="active">Telefone</label>
       </div>
     </div>
     <div class="row">
@@ -87,11 +87,11 @@ export default {
   data () {
     return {
       cep: '',
-      advertiser: '',
-      email: '',
+      advertiser: loginControl.loginData.user.name,
+      email: loginControl.loginData.user.email,
       rooms: '',
       price: '',
-      phone: '',
+      phone: loginControl.loginData.user.contact,
       bathroom: '',
       failLogin: false,
       successLogin: false
