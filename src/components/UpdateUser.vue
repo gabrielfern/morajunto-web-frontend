@@ -61,10 +61,7 @@ export default {
       })
         .then(resp => {
           if (resp.status < 300) {
-            console.log(this.id)
-            console.log('Mudar para algo')
           } else {
-            console.log('Mudar para outra coisa')
           }
         })
     }
@@ -76,7 +73,6 @@ export default {
       })
         .then(resp => resp.json())
         .then(data => this.processing(data.data))
-      console.log('asdas')
     })
   }
 }
