@@ -56,6 +56,13 @@ export default {
     })
   },
 
+  deleteAcc () {
+    return fetch('/api/users/' + loginControl.loginData.user.id, {
+      method: 'DELETE',
+      headers: this.headers
+    })
+  },
+
   getAllUsers () {
     return fetch('/api/users')
       .then(resp => resp.json())

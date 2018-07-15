@@ -41,37 +41,37 @@
 
 <script>
 import loginControl from '../services/login_control'
+import ajax from '../services/ajax'
 import { TheMask } from 'vue-the-mask'
 
 export default {
   components: { TheMask },
+
   data () {
     return {
       user: loginControl.loginData.user
     }
   },
+
   methods: {
     goToCadastrarAnuncio () {
       this.$router.push({ path: '/criarAnuncio' })
     },
+
     goToUpdateUser () {
       this.$router.push({ path: '/user/update/' + this.username })
     },
+
     goToAnuncios () {
       this.$router.push({ path: '/anuncios' })
     },
+
     deleteUser () {
       // eslint-disable-next-line
       modalDeleteacc.open()
       $('#modal-deleteacc-close').focus()
       addEventListener('deleteacc', () => {
-        fetch('/api/users/' + this.id, {
-          method: 'DELETE',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          }
-        })
+        ajax.deleteAcc()
           .then(() => {
             loginControl.logged = false
             this.$router.push({ path: '/' })
