@@ -10,11 +10,11 @@
           <input type="text" id="rua" class="fields">
           <label name="dados">Endereço</label>
       </div>
-      <div class="input-field col s1">
+      <div class="input-field col s2">
           <input type="text" id="estado" class="fields">
           <label name="dados">Estado</label>
       </div>
-      <div class="input-field col s3">
+      <div class="input-field col s3  ">
           <input type="text" id="city" class="fields">
           <label name="dados">Cidade</label>
       </div>
@@ -91,10 +91,11 @@ export default {
       $('#banheiro').val(data.bathroom)
       $('.fields').prop('disabled', true)
       $('[name=dados]').prop('class', 'active')
+
       /* eslint-disable no-undef */
-      setTimeout(function () {
-        getGeo(data.street, data.city, data.state)
-      }, 2000)
+      runMaps()
+      evenMp()
+      getGeo(data.street, data.city, data.state)
     }
   },
   mounted () {
@@ -104,8 +105,6 @@ export default {
       .then(resp => resp.json())
       .then(data => this.processing(data.data))
     /* eslint-disable no-undef */
-    runMaps()
-    evenMp()
   }
 }
 </script>
