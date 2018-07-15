@@ -3,8 +3,8 @@
     <h5 style="color: teal;">Anúncio</h5>
     <div class="row">
       <div class="input-field col s3">
-        <input type="text" class="fields" id="cep" >
-        <label  name="dados">CEP</label>
+        <the-mask :mask="['#####-###']" id="cep" v-model="cep" disabled/>
+        <label class="active">CEP</label>
       </div>
       <div class="input-field col s4">
           <input type="text" id="rua" class="fields">
@@ -77,12 +77,13 @@ export default {
     return {
       id: '',
       username: '',
-      contact: ''
+      contact: '',
+      cep: ''
     }
   },
   methods: {
     processing (data) {
-      $('#cep').val(data.cep)
+      this.cep = data.cep
       $('#rua').val(data.street)
       $('#estado').val(data.state)
       $('#city').val(data.city)
