@@ -10,7 +10,7 @@
                 <th>Banheiros</th>
             </tr>
         </thead>
-        <tbody id="test">
+        <tbody>
         <tr v-for="item in object" :key="item.id" >
           <td>
             <a v-bind:href="'#/anuncio/' + item.id" style="display: block; width:100%">{{item.city}}</a>
@@ -27,6 +27,8 @@
         </tr>
         </tbody>
     </table>
+    <br>
+    <a href="/#/"><button class="btn red lighten-2">Cancelar</button></a>
     </div>
   </div>
 </template>
