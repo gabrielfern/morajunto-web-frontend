@@ -4,7 +4,7 @@
     <div class="row">
       <div class="input-field col s3">
         <the-mask :mask="['#####-###']" id="cep" v-model="cep" disabled/>
-        <label class="active">CEP</label>
+        <label name="dados">CEP</label>
       </div>
       <div class="input-field col s4">
           <input type="text" id="rua" class="fields">

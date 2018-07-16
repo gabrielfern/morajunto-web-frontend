@@ -3,12 +3,12 @@
     <h5 style="color: teal;">Criar anúncio</h5>
     <div class="row">
       <div class="input-field col s2">
-        <the-mask :mask="['#####-###']" id="cep" v-model="cep"/>
+        <input id="cep" type="text" maxlength="8">
         <label>CEP</label>
       </div>
       <br>
       <div class="row col s2">
-        <button class="waves-effect waves-light btn" @click="getCep" :disabled="!cep"> <i class="material-icons">search</i>
+        <button class="waves-effect waves-light btn" @click="getCep" > <i class="material-icons">search</i>
         </button>
       </div>
     </div>
@@ -46,7 +46,7 @@
     </div>
     <div class="row">
       <div class="input-field col s2">
-         <input id="bathroom" type="text" v-model="bathroom">
+         <input id="bathroom" type="text" v-model="bathroom" maxlength="2">
         <label>Qtd Banheiros</label>
       </div>
         <div class="input-field col s2">
@@ -54,7 +54,7 @@
           <label>Preço</label>
         </div>
       <div class="input-field col s2">
-         <input id="rooms" type="text" v-model="rooms">
+         <input id="rooms" type="text" v-model="rooms" maxlength="2">
         <label>Qtd Quartos</label>
       </div>
     </div>
@@ -86,7 +86,6 @@ export default {
   components: { TheMask },
   data () {
     return {
-      cep: '',
       advertiser: loginControl.loginData.user.name,
       email: loginControl.loginData.user.email,
       rooms: '',
@@ -104,7 +103,8 @@ export default {
   methods: {
     getCep () {
       let cepCode = $('#cep').val()
-      if (cepCode.length === 9) {
+      console.log(cepCode)
+      if (cepCode.length === 8) {
         $.ajax({
           type: 'GET',
           url: 'https://viacep.com.br/ws/' + cepCode + '/json/',
@@ -129,7 +129,7 @@ export default {
         body: JSON.stringify({
           advertiser: this.advertiser,
           bathroom: parseInt(this.bathroom),
-          cep: this.cep,
+          cep: $('#cep').val(),
           email: this.email,
           lat: $('#id_latitude').val(),
           state: $('#estado').val(),
