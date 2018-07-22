@@ -1,21 +1,3 @@
-# morajunto-web-frontend
+### MoraJunto app, um sistema desenvolvido para o projeto de Engenharia de Software.
 
-> morajunto web front-end
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+O sistema MoraJunto tem como principal objetivo ajudar estudantes e profissionais oriundos de cidades diferentes da do seu local futuro de estudo/trabalho a encontrarem uma moradia digna, justa e confortável a um preço acessível, podendo fazer isto a partir do seu local de origem via internet, sendo assim evitando o risco de procurar um local somente quando vir a este novo local.
